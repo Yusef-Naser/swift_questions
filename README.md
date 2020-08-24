@@ -29,4 +29,40 @@ if let constantName = someOptional {
 
 - These kinds of optionals are defined as `implicitly unwrapped optionals`. You write an implicitly unwrapped optional by placing an exclamation point (String!) rather than a question mark (String?) after the type that you want to make optional. Rather than placing an exclamation point after the optional’s name when you use it, you place an exclamation point after the optional’s type when you declare it.
 
+5- **Assertions and Preconditions**
+- Assertions and preconditions are checks that happen at runtime
+- Assertions help you find mistakes and incorrect assumptions during development
+- preconditions help you detect issues in production.
 
+
+   
+6- **Range Operators**
+- **Closed Range Operator**
+```swift
+   for index in 1...5 {
+       print("\(index) times 5 is \(index * 5)")
+   }
+```
+- **Half-Open Range Operator** 
+```swift
+   let names = ["Anna", "Alex", "Brian", "Jack"]
+   let count = names.count
+   for i in 0..<count {
+       print("Person \(i + 1) is called \(names[i])")
+   }
+```
+- **One-Sided Ranges**
+```swift
+   for name in names[2...] {
+       print(name)
+   }
+
+   for name in names[...2] {
+       print(name)
+   }
+   
+   for name in names[..<2] {
+       print(name)
+   }
+   let range = ...5
+```
