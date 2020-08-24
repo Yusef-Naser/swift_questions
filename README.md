@@ -66,3 +66,64 @@ if let constantName = someOptional {
    }
    let range = ...5
 ```
+7- **Strings Are Value Types**
+- Swift’s String type is a value type. If you create a new String value, that String value is copied when it’s passed to a function or method, or when it’s assigned to a constant or variable. In each case, a new copy of the existing String value is created, and the new copy is passed or assigned, not the original version.
+
+8- **String Interpolation**
+- String interpolation is a way to construct a new String value from a mix of constants, variables, literals, and expressions by including their values inside a string literal. You can use string interpolation in both single-line and multiline string literals. Each item that you insert into the string literal is wrapped in a pair of parentheses, prefixed by a backslash (\):
+```swift
+let multiplier = 3
+let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
+```
+
+9- **Counting Characters**
+- Note that Swift’s use of extended grapheme clusters for Character values means that string concatenation and modification may not always affect a string’s character count.
+For example, if you initialize a new string with the four-character word cafe, and then append a COMBINING ACUTE ACCENT (U+0301) to the end of the string, the resulting string will still have a character count of 4, with a fourth character of é, not e:
+```swift
+var word = "cafe"
+print("the number of characters in \(word) is \(word.count)")
+// Prints "the number of characters in cafe is 4"
+
+word += "\u{301}"    // COMBINING ACUTE ACCENT, U+0301
+
+print("the number of characters in \(word) is \(word.count)")
+// Prints "the number of characters in café is 4"
+```
+10- **String Indices**
+- Each String value has an associated index type, String.Index, which corresponds to the position of each Character in the string.
+
+As mentioned above, different characters can require different amounts of memory to store, so in order to determine which Character is at a particular position, you must iterate over each Unicode scalar from the start or end of that String. For this reason, Swift strings can’t be indexed by integer values.
+
+Use the startIndex property to access the position of the first Character of a String. The endIndex property is the position after the last character in a String. As a result, the endIndex property isn’t a valid argument to a string’s subscript. If a String is empty, startIndex and endIndex are equal.
+
+You access the indices before and after a given index using the index(before:) and index(after:) methods of String. To access an index farther away from the given index, you can use the index(_:offsetBy:) method instead of calling one of these methods multiple times.
+
+You can use subscript syntax to access the Character at a particular String index.
+```swift
+let greeting = "Guten Tag!"
+greeting[greeting.startIndex]
+// G
+greeting[greeting.index(before: greeting.endIndex)]
+// !
+greeting[greeting.index(after: greeting.startIndex)]
+// u
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+greeting[index]
+// a
+```
+- Attempting to access an index outside of a string’s range or a Character at an index outside of a string’s range will trigger a runtime error.
+```swift
+greeting[greeting.endIndex] // Error
+greeting.index(after: greeting.endIndex) // Error
+```
+- Use the indices property to access all of the indices of individual characters in a string.
+```swift
+for index in greeting.indices {
+    print("\(greeting[index]) ", terminator: "")
+}
+// Prints "G u t e n   T a g ! "
+```
+> NOTE
+>
+> You can use the startIndex and endIndex properties and the index(before:), index(after:), and index(_:offsetBy:) methods on any type that conforms to the Collection protocol. This includes String, as shown here, as well as collection types such as Array, Dictionary, and Set.
+
