@@ -166,3 +166,14 @@ For more information about using Set with Foundation and Cocoa, see [Bridging Be
 - Use the isSuperset(of:) method to determine whether a set contains all of the values in a specified set.
 - Use the isStrictSubset(of:) or isStrictSuperset(of:) methods to determine whether a set is a subset or superset, but not equal to, a specified set.
 - Use the isDisjoint(with:) method to determine whether two sets have no values in common.
+
+17- **Dictionaries**
+> NOTE
+>
+> Swift’s Dictionary type is bridged to Foundation’s NSDictionary class.
+For more information about using Dictionary with Foundation and Cocoa, see [Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239).
+
+>NOTE
+>
+>A dictionary Key type must conform to the Hashable protocol, like a set’s value type.
+
