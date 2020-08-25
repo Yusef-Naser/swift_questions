@@ -157,4 +157,12 @@ For more information about using Set with Foundation and Cocoa, see [Bridging Be
 - Use the union(_:) method to create a new set with all of the values in both sets.
 - Use the subtracting(_:) method to create a new set with values not in the specified set.
 
+16- **Set Membership and Equality**
 
+<img src="assets/setEulerDiagram_2x.png" width="50%" />
+
+- Use the “is equal” operator (==) to determine whether two sets contain all of the same values.
+- Use the isSubset(of:) method to determine whether all of the values of a set are contained in the specified set.
+- Use the isSuperset(of:) method to determine whether a set contains all of the values in a specified set.
+- Use the isStrictSubset(of:) or isStrictSuperset(of:) methods to determine whether a set is a subset or superset, but not equal to, a specified set.
+- Use the isDisjoint(with:) method to determine whether two sets have no values in common.
