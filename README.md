@@ -147,7 +147,9 @@ For more information about using Array with Foundation and Cocoa, see [Bridging 
 For more information about using Set with Foundation and Cocoa, see [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530).
 
 15- **Fundamental Set Operations**
-<img align="center" src="assets/setVennDiagram_2x.png" width="50%" />  
+
+
+<img align="center" src="assets/setVennDiagram_2x.png" width="80%" />  
 - Use the intersection(_:) method to create a new set with only the values common to both sets.
 - Use the symmetricDifference(_:) method to create a new set with values in either set, but not both.
 - Use the union(_:) method to create a new set with all of the values in both sets.
