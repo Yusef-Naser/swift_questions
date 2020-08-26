@@ -348,3 +348,17 @@ print("Game over!")
 ```
 28- **Early Exit**
 - A `guard` statement, like an if statement, executes statements depending on the Boolean value of an expression. You use a guard statement to require that a condition must be true in order for the code after the guard statement to be executed. Unlike an if statement, a guard statement always has an else clause—the code inside the else clause is executed if the condition is not true.
+29- **Variadic Parameters in functions**
+```swift
+func arithmeticMean(_ numbers: Double...) -> Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+arithmeticMean(1, 2, 3, 4, 5)
+// returns 3.0, which is the arithmetic mean of these five numbers
+arithmeticMean(3, 8.25, 18.75)
+// returns 10.0, which is the arithmetic mean of these three numbers
+```
