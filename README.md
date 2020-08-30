@@ -1,6 +1,7 @@
 # swift Questions
 
 ## different between class function and static function.
+## When use [weak self]
 
 1 - **Type Annotations**
 - This example provides a type annotation for a variable called welcomeMessage, to indicate that the variable can store String values:
@@ -365,4 +366,102 @@ arithmeticMean(1, 2, 3, 4, 5)
 // returns 3.0, which is the arithmetic mean of these five numbers
 arithmeticMean(3, 8.25, 18.75)
 // returns 10.0, which is the arithmetic mean of these three numbers
+```
+30- **Closure Expressions**
+```swift
+let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+func backward(_ s1: String, _ s2: String) -> Bool {
+    return s1 > s2
+}
+var reversedNames = names.sorted(by: backward)
+// reversedNames is equal to ["Ewa", "Daniella", "Chris", "Barry", "Alex"]
+
+reversedNames = names.sorted(by: { (s1: String, s2: String) -> Bool in
+    return s1 > s2
+})
+
+reversedNames = names.sorted(by: { (s1: String, s2: String) -> Bool in return s1 > s2 } )
+reversedNames = names.sorted(by: { s1, s2 in return s1 > s2 } )
+reversedNames = names.sorted(by: { s1, s2 in s1 > s2 } )
+reversedNames = names.sorted(by: { $0 > $1 } )
+reversedNames = names.sorted(by: >)
+```
+31- **Trailing Closures**
+```swift
+func someFunctionThatTakesAClosure(closure: () -> Void) {
+    // function body goes here
+}
+
+// Here's how you call this function without using a trailing closure:
+
+someFunctionThatTakesAClosure(closure: {
+    // closure's body goes here
+})
+
+// Here's how you call this function with a trailing closure instead:
+
+someFunctionThatTakesAClosure() {
+    // trailing closure's body goes here
+}
+```
+32- **multiple closures**
+```swift
+func loadPicture(from server: Server, completion: (Picture) -> Void, onFailure: () -> Void) {
+    if let picture = download("photo.jpg", from: server) {
+        completion(picture)
+    } else {
+        onFailure()
+    }
+}
+
+loadPicture(from: someServer) { picture in
+    someView.currentPicture = picture
+} onFailure: {
+    print("Couldn't download the next picture.")
+}
+```
+33- **Escaping Closures**
+- One way that a closure can escape is by being stored in a variable that’s defined outside the function. As an example, many functions that start an asynchronous operation take a closure argument as a completion handler. The function returns after it starts the operation, but the closure isn’t called until the operation is completed—the closure needs to escape, to be called later. For example:
+```swift
+var completionHandlers = [() -> Void]()
+func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void) {
+    completionHandlers.append(completionHandler)
+}
+
+func someFunctionWithNonescapingClosure(closure: () -> Void) {
+    closure()
+}
+
+class SomeClass {
+    var x = 10
+    func doSomething() {
+        someFunctionWithEscapingClosure { self.x = 100 }
+        someFunctionWithNonescapingClosure { x = 200 }
+    }
+}
+
+let instance = SomeClass()
+instance.doSomething()
+print(instance.x)
+// Prints "200"
+
+completionHandlers.first?()
+print(instance.x)
+// Prints "100"
+
+class SomeOtherClass {
+    var x = 10
+    func doSomething() {
+        someFunctionWithEscapingClosure { [self] in x = 100 }
+        someFunctionWithNonescapingClosure { x = 200 }
+    }
+}
+
+struct SomeStruct {
+    var x = 10
+    mutating func doSomething() {
+        someFunctionWithNonescapingClosure { x = 200 }  // Ok
+        someFunctionWithEscapingClosure { x = 100 }     // Error
+    }
+}
 ```
