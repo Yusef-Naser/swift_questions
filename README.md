@@ -502,7 +502,7 @@ default:
 // Prints "Mostly harmless"
 ```
 35- **Iterating over Enumeration Cases**
-- For some enumerations, it’s useful to have a collection of all of that enumeration’s cases. You enable this by writing : CaseIterable after the enumeration’s name. Swift exposes a collection of all the cases as an allCases property of the enumeration type. Here’s an example:
+- For some enumerations, it’s useful to have a collection of all of that enumeration’s cases. You enable this by writing ` : CaseIterable` after the enumeration’s name. Swift exposes a collection of all the cases as an allCases property of the enumeration type. Here’s an example:
 ```swift
 enum Beverage: CaseIterable {
     case coffee, tea, juice
