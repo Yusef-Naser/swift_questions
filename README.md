@@ -933,6 +933,7 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
 55- **Type Methods**
 - You indicate type methods by writing the `static` keyword before the method’s func keyword.
 - Classes can use the `class` keyword instead, to allow subclasses to override the superclass’s implementation of that method.
+
 56- **Subscript Syntax**
 - Subscripts enable you to query instances of a type by writing one or more values in square brackets after the instance name. Their syntax is similar to both instance method syntax and computed property syntax. You write subscript definitions with the subscript keyword, and specify one or more input parameters and a return type, in the same way as instance methods. Unlike instance methods, subscripts can be `read-write` or `read-only`. This behavior is communicated by a getter and setter in the same way as for computed properties:
 ```swift
