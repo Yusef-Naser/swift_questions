@@ -1006,3 +1006,6 @@ enum Planet: Int {
 let mars = Planet[4]
 print(mars)
 ```
+60- **Preventing Overrides from Inheritance**
+- You can prevent a method, property, or subscript from being overridden by marking it as `final`. Do this by writing the final modifier before the method, property, or subscript’s introducer keyword (such as `final var`, `final func`, `final class func`, and `final subscript`).
+
