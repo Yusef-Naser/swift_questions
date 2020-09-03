@@ -1009,3 +1009,43 @@ print(mars)
 60- **Preventing Overrides from Inheritance**
 - You can prevent a method, property, or subscript from being overridden by marking it as `final`. Do this by writing the final modifier before the method, property, or subscript’s introducer keyword (such as `final var`, `final func`, `final class func`, and `final subscript`).
 
+61- **Initializer Delegation for Value Types**
+- Initializers can call other initializers to perform part of an instance’s initialization. This process, known as initializer delegation, avoids duplicating code across multiple initializers.
+```swift
+struct Size {
+    var width = 0.0, height = 0.0
+}
+struct Point {
+    var x = 0.0, y = 0.0
+}
+
+struct Rect {
+    var origin = Point()
+    var size = Size()
+    init() {}
+    init(origin: Point, size: Size) {
+        self.origin = origin
+        self.size = size
+    }
+    init(center: Point, size: Size) {
+        let originX = center.x - (size.width / 2)
+        let originY = center.y - (size.height / 2)
+        self.init(origin: Point(x: originX, y: originY), size: size)
+    }
+}
+```
+62- **Designated Initializers and Convenience Initializers**
+- Designated initializers are the primary initializers for a class. A designated initializer fully initializes all properties introduced by that class and calls an appropriate superclass initializer to continue the initialization process up the superclass chain.
+- Convenience initializers are secondary, supporting initializers for a class. You can define a convenience initializer to call a designated initializer from the same class as the convenience initializer with some of the designated initializer’s parameters set to default values. You can also define a convenience initializer to create an instance of that class for a specific use case or input value type.
+
+63- **Initializer Delegation for Class Types**
+- To simplify the relationships between designated and convenience initializers, Swift applies the following three rules for delegation calls between initializers:
+    - A designated initializer must call a designated initializer from its immediate superclass.
+    - A convenience initializer must call another initializer from the same class.
+    - A convenience initializer must ultimately call a designated initializer.
+    
+- A simple way to remember this is:
+    - Designated initializers must always delegate up.
+    - Convenience initializers must always delegate across.
+
+<img src="assets/initializerDelegation01_2x.png" width="50%" />
