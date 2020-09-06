@@ -1,6 +1,5 @@
 # swift Questions
 
-## different between class function and static function.
 ## When use [weak self]
 ## https://medium.com/@chetan15aga/ios-interview-questions-part-3-swift-4b00ce352122
 ## [Manual Memory Management](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)
@@ -930,7 +929,7 @@ somePoint.moveBy(x: 2.0, y: 3.0)
 print("The point is now at (\(somePoint.x), \(somePoint.y))")
 // Prints "The point is now at (3.0, 4.0)"
 ```
-55- **Type Methods**
+55- **Type Methods and what is the different between class function and static function?**
 - You indicate type methods by writing the `static` keyword before the method’s func keyword.
 - Classes can use the `class` keyword instead, to allow subclasses to override the superclass’s implementation of that method.
 
