@@ -1921,3 +1921,10 @@ print(differentNumbers.allEqual())
 ```
 99 - **[GENERIC](https://docs.swift.org/swift-book/LanguageGuide/Generics.html)**
 
+100- **[Opaque Types](https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html)**
+
+101- **[AutomaticReferenceCounting](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html)**
+
+102- **[MemorySafety](https://docs.swift.org/swift-book/LanguageGuide/MemorySafety.html)**
+
+103- **[AccessControl](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html)**
