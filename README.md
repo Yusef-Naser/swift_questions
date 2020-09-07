@@ -1919,3 +1919,5 @@ print(equalNumbers.allEqual())
 print(differentNumbers.allEqual())
 // Prints "false"
 ```
+99 - **[GENERIC](https://docs.swift.org/swift-book/LanguageGuide/Generics.html)**
+
