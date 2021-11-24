@@ -4,6 +4,7 @@
 ## https://medium.com/@chetan15aga/ios-interview-questions-part-3-swift-4b00ce352122
 ## [Manual Memory Management](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)
 ## different between public and open
+## [parallel-programming(]https://medium.com/flawless-app-stories/basics-of-parallel-programming-with-swift-93fee8425287)
 
 1 - **Type Annotations**
 - This example provides a type annotation for a variable called welcomeMessage, to indicate that the variable can store String values:
